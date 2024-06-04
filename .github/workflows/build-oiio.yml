@@ -27,12 +27,8 @@ jobs:
     - name: test oiiotool.exe
       run: ./vcpkg/installed/x64-windows/tools/openimageio/oiiotool.exe
 
-    - name: zip tools
-      shell: pwsh
-      run: Compress-Archive -Path ./vcpkg/installed/x64-windows/tools/openimageio -DestinationPath oiio-tools.zip
-
     - name: upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: oiio-tools
-        path: oiio-tools.zip
+        name: oiio-tools-windows-2.5.8.0
+        path: ./vcpkg/installed/x64-windows/tools/openimageio
