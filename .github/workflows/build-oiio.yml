@@ -25,11 +25,11 @@ jobs:
         ./vcpkg/vcpkg.exe install openimageio[tools]
 
     - name: test oiiotool.exe
-      run: ./vcpkg/installed/x64-windows/tools/bin/openimageio/oiiotool.exe
+      run: ./vcpkg/installed/x64-windows/tools/openimageio/oiiotool.exe
 
     - name: zip tools
       shell: pwsh
-      run: Compress-Archive -Path vcpkg/installed/x64-windows/tools/bin/openimageio -DestinationPath oiio-tools.zip
+      run: Compress-Archive -Path ./vcpkg/installed/x64-windows/tools/openimageio -DestinationPath oiio-tools.zip
 
     - name: upload artifact
       uses: actions/upload-artifact@v2
