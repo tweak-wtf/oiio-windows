@@ -23,3 +23,16 @@ jobs:
         git clone https://github.com/microsoft/vcpkg.git
         ./vcpkg/bootstrap-vcpkg.bat
         ./vcpkg/vcpkg.exe install openimageio[tools]
+
+    - name: test oiiotools.exe
+      run: .\vcpkg\installed\x64-windows\tools\bin\oiiotool.exe
+
+    - name: zip tools
+      shell: pwsh
+      run: Compress-Archive -Path vcpkg\installed\x64-windows\tools\bin\openimageio -DestinationPath oiio-tools.zip
+
+    - name: upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: oiio-tools
+        path: oiio-tools.zip
