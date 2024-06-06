@@ -25,7 +25,7 @@ jobs:
         ./vcpkg/vcpkg.exe install openimageio[tools]
 
     - name: test oiiotool.exe
-      run: ./vcpkg/installed/x64-windows/tools/openimageio/oiiotool.exe
+      run: ./vcpkg/installed/x64-windows/tools/openimageio/oiiotool.exe --help
 
     - name: upload artifact
       uses: actions/upload-artifact@v2
