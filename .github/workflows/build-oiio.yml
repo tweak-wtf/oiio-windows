@@ -3,7 +3,7 @@ name: build oiio for windows
 
 on:
   push:
-    branches: ["develop"]
+    branches: ["test-ci"]
 
 jobs:
   build:
