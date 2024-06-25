@@ -14,5 +14,10 @@ RUN choco install --no-progress --yes git
 RUN choco install --no-progress --yes cmake --installargs "ADD_CMAKE_TO_PATH=System"
 RUN choco install --no-progress --yes conan
 
-SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+
+# conan profile detect --force
+# conan install --requires openimageio/2.5.12.0 -g CMakeDeps -g CMakeToolchain
+# conan cache path openimageio/2.5.12.0
+
+# SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 CMD while ($true) { Start-Sleep -Seconds 60 }

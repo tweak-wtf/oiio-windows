@@ -14,21 +14,15 @@ jobs:
 
     - name: install visualstudio
       run: |
-        choco install visualstudio2019buildtools
-        choco install visualstudio2019-workload-vctools
-        choco install visualstudio2019-workload-manageddesktop
+        choco install visualstudio2022buildtools
+        choco install visualstudio2022-workload-vctools
+        choco install visualstudio2022-workload-manageddesktop
 
-    - name: install oiio using vcpkg
+    - name: install cmake
       run: |
-        git clone https://github.com/microsoft/vcpkg.git
-        ./vcpkg/bootstrap-vcpkg.bat
-        ./vcpkg/vcpkg.exe install openimageio[tools]
+        choco install cmake --installargs "ADD_CMAKE_TO_PATH=System"
 
-    - name: test oiiotool.exe
-      run: ./vcpkg/installed/x64-windows/tools/openimageio/oiiotool.exe --help
-
-    - name: upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: oiio-tools-windows-2.5.8.0
-        path: ./vcpkg/installed/x64-windows/tools/openimageio
+    - name: build with oiio_win_batch
+      run: |
+        git clone https://github.com/BrianHanke/oiio_win_batch.git
+        ./oiio_win_batch/oiio.bat
